@@ -1,6 +1,11 @@
 <?php
 /**
  * クラス継承
+ * final
+ * abstract
+ * static　静的メソッドを呼び出す
+ * self
+ * parent 継承元の静的プロパティをとってくる
  */
 class Person
 {
