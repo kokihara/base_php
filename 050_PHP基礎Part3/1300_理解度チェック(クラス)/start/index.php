@@ -1,28 +1,39 @@
 <?php
 /**
  * 理解度チェック（クラス）
- * 
+ *
  * ファイル書き込みを行うためのクラスを定義してみましょう。
- * 
+ *
  * ヒント）PHP_EOL: 改行するための特殊な定数です。
  */
-$content = 'Hello, Bob.'; // append
-$content .= PHP_EOL; // newline
-$content .= 'Bye, '; // append
-$content .= 'Bob.'; // append
-$content .= PHP_EOL; // newline
+// クラス作成
+class MyFileWriter{
+    private $filename;
+    private $content = '';
+    public const APPEND = FILE_APPEND;
 
-// commit
-file_put_contents('sample.txt', $content);
-$content = '';
+    function __construct($filename){
+        $this->filename = $filename;
+    }
 
-$content = 'Good night, Bob.'; // append
+    function append($content){
+        $this->content .= $content;
+        return $this;
+    }
 
-// commit
-file_put_contents('sample.txt', $content, FILE_APPEND);
-$content = '';
+    function newline(){
+        return $this->append(PHP_EOL);
+    }
 
-/* クラスの呼び出し方は以下のようにするものとします。
+    function commit($flg = null){
+        file_put_contents($this->filename, $this->content, $flg);
+        $this->content = '';
+        return $this;
+    }
+
+}
+
+
 
 $file = new MyFileWriter('sample.txt');
 $file->append('Hello, Bob.')
@@ -33,5 +44,3 @@ $file->append('Hello, Bob.')
     ->commit()
     ->append('Good night, Bob.')
     ->commit(MyFileWriter::APPEND);
-
-*/
