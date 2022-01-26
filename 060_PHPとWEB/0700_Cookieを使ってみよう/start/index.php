@@ -8,7 +8,8 @@
 
 setcookie('VISIT_COUNT',1,[
     //cookieの有効期限は expiresで設定を行う
-    'expires' => time() + 60 * 60 * 24 * 30
+    'expires' => time() + 60 * 60 * 24 * 30,
+    'path' => '/',
 ]);
 
 var_dump($_COOKIE['VISIT_COUNT']);
