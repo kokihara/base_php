@@ -1,4 +1,4 @@
-<?php 
+<?php
 session_start();
 $self_url = $_SERVER['PHP_SELF'];
 ?>
@@ -8,7 +8,7 @@ $self_url = $_SERVER['PHP_SELF'];
     <input type="submit" name="type" value="create">
 </form>
 
-<?php 
+<?php
 if(isset($_POST['type'])) {
     if($_POST['type'] === 'create') {
         $_SESSION['todos'][] = $_POST['title'];
@@ -23,9 +23,9 @@ if(isset($_POST['type'])) {
 }
 
 if(empty($_SESSION['todos'])) {
-    $_SESSION['todos'] = [];
+    $_SESSION['todos'][] = array();
     echo 'タスクを入力しましょう！';
-    die();
+    exit();
 }
 ?>
 
