@@ -14,6 +14,8 @@ if (
     ];
 }
 
+
+
 if(!empty($_SESSION['user'])) {
     echo 'ログイン中です。';
 } else {
